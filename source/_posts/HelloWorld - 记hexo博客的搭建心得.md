@@ -1,10 +1,11 @@
 ---
 title: HelloWorld - 记hexo博客的搭建心得
-date: 1919-08-10 11:45:14
 tags: blog
 category: Programming
+abbrlink: '3903'
+date: 1919-08-10 11:45:14
 ---
-既然你现在已经看到了这篇文章，那么说明我的博客搭建至少不算失败。hexo博客的搭建并不算麻烦，但也需要够的耐心，和一点点的node使用经验与yml语法知识
+既然你现在已经看到了这篇文章，那么说明我的博客搭建至少不算失败。hexo博客的搭建并不算麻烦，但也需要足够的耐心，和一点点的node使用经验以及yml语法知识
 
 ## 安装node及npm
 
@@ -17,13 +18,14 @@ category: Programming
 首先，从[github release](https://github.com/coreybutler/nvm-windows/releases)，下载并打开最新版本的nvm-setup.exe，一路安装
 
 然后设置镜像，这里以阿里的镜像站为例
+
 ```bash
 nvm npm_mirror https://npmmirror.com/mirrors/npm/
 nvm node_mirror https://npmmirror.com/mirrors/node/
 ```
 放心，这里的npm只是下载npm的镜像，并不是安装npm包的镜像，所以不用担心npm源出问题
 
-然后，用`nvm list available`来列出目前的可用版本，然后用`nvm install 版本号`来安装node及npm。建议安装lts版本，这样不容易有奇怪bug
+然后，用`nvm list available`来列出目前的可用版本，然后用`nvm install 版本号`来安装node及npm。建议安装lts版本，这样不容易有奇怪的bug
 
 最后用`nvm use 版本`来设置node版本，设置完成后后可以用`node -v`确认
 
@@ -32,19 +34,24 @@ nvm node_mirror https://npmmirror.com/mirrors/node/
 如果你想在Linux上使用nvm，我不会有什么意见，毕竟爱折腾自己的人并不少。但既然你选择了Linux，那么我还是推荐你使用n来进行node的版本控制，这要简单易用的多。
 
 首先安装npm，这里以ubuntu/debian为例：
+
 ```bash
 sudo apt-get update && sudo apt-get install node npm
 ```
+
 然后，npm切换至阿里的源，并安装n
+
 ```bash
 npm config set registry https://registry.npmmirror.com/
 npm install -g n
 ```
+
 > 如果出现 npm WARN config global --global, --local are deprecated. Use --location ，不用担心，升级npm至最新版本即可解决
 
 **这里不用cnpm的原因是因为cnpm不认package-lock.json，可能会有版本上的问题**
 
 然后，使用清华源安装node，并确认node版本
+
 ```bash
 export NODE_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/
 sudo n lts
@@ -100,11 +107,11 @@ hexo clean && hexo generate && hexo server
 
 首先，在博客根目录下执行
 
-```
+```bash
 npm install hexo-deployer-git --save
 ```
 
-然后，在_config.yml的最后部分
+然后，在_config.yml的最后部分，修改deploy部分
 
 ```yml
 # Deployment
@@ -117,7 +124,7 @@ deploy:
 
 由于hexo支持对命令的缩写，故一般的部署流程可以简写为
 
-```
+```bash
 hexo clean && hexo g -d
 ```
 
@@ -169,7 +176,7 @@ https://username.github.io/posts/1690090958.html
 
 在博客根目录下执行
 
-```
+```bash
 npm install hexo-browsersync
 ```
 
